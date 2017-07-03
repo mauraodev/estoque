@@ -1,0 +1,14 @@
+nav.navbar.navbar-default{
+  background-color: #337ab7;
+  border-color: #2e6da4;
+  margin-top: 10px;
+}
+
+nav.navbar.navbar-default a {
+  color: white;
+}
+
+li p.navbar-text, a.navbar-brand {
+  color: white!important;
+  font-weight: bolder;
+}
