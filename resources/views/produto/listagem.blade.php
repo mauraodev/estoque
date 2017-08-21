@@ -9,6 +9,13 @@
             Você não tem nenhum produto cadastrado.
         </div>
     @else
+    
+        @if (old('nome')):
+            <div class="alert alert-success">
+                <strong>Sucesso!</strong> O produto {{ old('nome') }} foi adicionado com sucesso!
+            </div>
+        @endif
+
         <table class="table table-striped table-bordered table-hover">
             @foreach ($produtos as $p)
                 <tr class="{{ $p->quantidade <= 1 ? 'danger' : ''}}">
