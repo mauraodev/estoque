@@ -3,6 +3,7 @@
 namespace estoque\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 
 class ProdutoController extends Controller
 {
@@ -27,5 +28,17 @@ class ProdutoController extends Controller
     public function novo()
     {
         return view('produto.formulario');
+    }
+
+    public function adiciona(Request $request)
+    {
+        $nome = $request->input('nome');
+        $descricao = $request->input("descricao");
+        $valor = $request->input("valor");
+        $quantidade = $request->input("quantidade");
+
+        DB::insert('insert into produtos values (null, ?, ?, ?, ?, null, null)', array($nome, $valor, $descricao, $quantidade));
+
+        return view('produto.adicionado')->with('nome', $nome);
     }
 }
