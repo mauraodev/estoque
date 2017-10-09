@@ -24,3 +24,9 @@ Route::get('/produtos/novo', 'ProdutoController@novo');
 Route::post('/produtos/adiciona', 'ProdutoController@adiciona');
 
 Route::get('/produtos/json', 'ProdutoController@json');
+
+Route::get('/produtos/remove/{id}', 'ProdutoController@remove');
+
+Route::get('/produtos/editar/{id}', 'ProdutoController@editar');
+
+Route::post('/produtos/store', 'ProdutoController@store');
