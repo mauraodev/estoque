@@ -23,6 +23,10 @@
             <label for="descricao">Descricao</label>
             <textarea class="form-control" name="descricao">{{ $p->descricao }}</textarea>
         </div>
+        <div class="form-group">
+            <label>Tamanho</label>
+            <input name="tamanho" class="form-control" value="{{ $p->tamanho }}" />    
+        </div>
         <button type="submit" class="btn btn-primary btn-block">Submit</button>
     </form>
 

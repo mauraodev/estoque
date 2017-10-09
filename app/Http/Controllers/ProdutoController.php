@@ -32,6 +32,13 @@ class ProdutoController extends Controller
 
     public function adiciona(Request $request)
     {
+        $this->validate($request,[
+            'nome' => 'required|min:5',
+            'descricao' => 'required|max:255',
+            'valor' => 'required|numeric',
+            'quantidade' => 'required|numeric'
+        ]);
+
         $params = $request->all();
         Produto::create($params);
 
@@ -68,6 +75,7 @@ class ProdutoController extends Controller
         $produto->quantidade = $request->input('quantidade');
         $produto->valor = $request->input('valor');
         $produto->descricao = $request->input('descricao');
+        $produto->tamanho = $request->input('tamanho');
         $produto->save();
 
         return redirect()
