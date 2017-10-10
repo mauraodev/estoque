@@ -5,9 +5,16 @@ namespace estoque\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use estoque\Produto;
+use estoque\Http\Requests\ProdutosRequest;
+use Validator;
 
 class ProdutoController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->only('index');
+    }
+
     public function lista()
     {
         $produtos = Produto::all();
@@ -30,15 +37,8 @@ class ProdutoController extends Controller
         return view('produto.formulario');
     }
 
-    public function adiciona(Request $request)
+    public function adiciona(ProdutosRequest $request)
     {
-        $this->validate($request,[
-            'nome' => 'required|min:5',
-            'descricao' => 'required|max:255',
-            'valor' => 'required|numeric',
-            'quantidade' => 'required|numeric'
-        ]);
-
         $params = $request->all();
         Produto::create($params);
 

@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/produtos', 'ProdutoController@lista');
+Route::get('/produtos', 'ProdutoController@lista')->middleware('nosso-middleware');
 
 Route::get('/produtos/mostra/{id}', 'ProdutoController@mostra');
 
@@ -30,3 +30,9 @@ Route::get('/produtos/remove/{id}', 'ProdutoController@remove');
 Route::get('/produtos/editar/{id}', 'ProdutoController@editar');
 
 Route::post('/produtos/store', 'ProdutoController@store');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+//Route::get('/login', 'LoginController@login');
