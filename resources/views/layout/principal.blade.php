@@ -1,8 +1,8 @@
 <html>
 <head>
-    <link href="/css/app.css" rel="stylesheet">
-    <link href="/css/custom.css" rel="stylesheet">
     <title>Controle de estoque</title>
+    <link href="{{ asset("/css/app.css") }}" rel="stylesheet">
+    <link href="{{ asset("/css/custom.css") }}" rel="stylesheet">
 </head>
 <body>
    <div class="container">
