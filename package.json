@@ -9,11 +9,13 @@
   },
   "devDependencies": {
     "axios": "^0.19.2",
-    "bootstrap-sass": "^3.3.7",
     "cross-env": "^3.2.3",
     "jquery": "^3.5.0",
     "laravel-mix": "^0.8.3",
     "lodash": "^4.17.13",
     "vue": "^2.1.10"
+  },
+  "dependencies": {
+    "bootstrap": "^4.4.1"
   }
 }
