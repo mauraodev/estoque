@@ -18,6 +18,7 @@ class ProdutoController extends Controller
 
     public function lista()
     {
+        info("Teste");
         $produtos = Produto::all();
         return view('produto.listagem')->withProdutos($produtos);
     }
@@ -70,7 +71,7 @@ class ProdutoController extends Controller
     }
 
     public function store(Request $request)
-    {        
+    {
         $produto = Produto::find($request->input('id'));
         $produto->nome = $request->input('nome');
         $produto->quantidade = $request->input('quantidade');
