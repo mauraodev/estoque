@@ -11,12 +11,12 @@
 	    	<div class="container-fluid">
 
 	    		<div class="navbar-header">
-	      			<a class="navbar-brand" href="/produtos">Estoque Laravel</a>
+	      			<a class="navbar-brand" href="{{ url('/produtos') }}">Estoque Laravel</a>
 	    		</div>
 
 	      		<ul class="nav navbar-nav navbar-right">
-	        		<li><a href="/produtos">Listagem</a></li>
-	        		<li><a href="/produtos/novo">Novo</a></li>
+	        		<li><a href="{{ url('produtos') }}">Listagem</a></li>
+	        		<li><a href="{{ url('/produtos/novo') }}">Novo</a></li>
 	      		</ul>
 	    	</div>
 	  	</nav>
