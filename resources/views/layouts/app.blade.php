@@ -36,7 +36,12 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        &nbsp;
+                        <li>
+                            <a href="">Produtos</a>
+                        </li>
+                        <li>
+                            <a href="">Categorias</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

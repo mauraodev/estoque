@@ -36,3 +36,8 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 //Route::get('/login', 'LoginController@login');
+
+Route::prefix('categories')->group(function () {
+    Route::get('/', 'CategoriesController@index');
+    Route::get('/create', 'CategoriesController@create');
+});
