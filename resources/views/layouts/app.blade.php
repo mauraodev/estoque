@@ -29,7 +29,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        {{ config('app.name', 'Estoque') }}
                     </a>
                 </div>
 
@@ -64,7 +64,7 @@
                                         </form>
                                     </li>
                                     <li>
-                                        <a href="{{ action('ProdutoController@lista') }}">
+                                        <a href="{{ action('ProdutoController@index') }}">
                                             Produtos
                                         </a>
                                     </li>
@@ -76,7 +76,9 @@
             </div>
         </nav>
 
-        @yield('content')
+        <div class="container">
+            @yield('content')
+        </div>
     </div>
 
     <!-- Scripts -->

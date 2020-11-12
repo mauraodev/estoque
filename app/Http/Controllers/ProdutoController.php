@@ -11,16 +11,18 @@ use Validator;
 
 class ProdutoController extends Controller
 {
-    public function __construct()
+    protected $product;
+
+    public function __construct(Produto $product)
     {
         $this->middleware('auth')->only('index');
+        $this->product = $product;
     }
 
-    public function lista()
+    public function index()
     {
-        info("Teste");
-        $produtos = Produto::all();
-        return view('produto.listagem')->withProdutos($produtos);
+        $produtos = $this->product->all();
+        return view('produto.index', ['produtos' => $produtos]);
     }
 
     public function mostra($id)

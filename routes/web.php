@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/produtos', 'ProdutoController@lista')->middleware('nosso-middleware');
+Route::get('/produtos', 'ProdutoController@index')->middleware('nosso-middleware');
 
 Route::get('/produtos/mostra/{id}', 'ProdutoController@mostra');
 

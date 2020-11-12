@@ -1,6 +1,6 @@
-@extends('layout.principal')
+@extends('layouts.app')
 
-@section('conteudo')
+@section('content')
 
 <div class="container">
     <h1>Listagem de produtos</h1>
