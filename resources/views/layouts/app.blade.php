@@ -40,7 +40,9 @@
                             <a href="">Produtos</a>
                         </li>
                         <li>
-                            <a href="">Categorias</a>
+                            <a href="{{ action('CategoriesController@index')}}">
+                                Categorias
+                            </a>
                         </li>
                     </ul>
 

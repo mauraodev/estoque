@@ -40,4 +40,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::prefix('categories')->group(function () {
     Route::get('/', 'CategoriesController@index');
     Route::get('/create', 'CategoriesController@create');
+    Route::post('/store', 'CategoriesController@store');
 });

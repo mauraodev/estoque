@@ -1,12 +1,12 @@
 <?php
 
-namespace estoque\Http\Controllers;
+namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-use estoque\Produto;
-use estoque\Categoria;
-use estoque\Http\Requests\ProdutosRequest;
+use App\Produto;
+use App\Categoria;
+use App\Http\Requests\ProdutosRequest;
 use Validator;
 
 class ProdutoController extends Controller
