@@ -13,8 +13,8 @@ class AdicionaTamanhoNoProduto extends Migration
      */
     public function up()
     {
-        Schema::table('produtos', function($table) {
-            $table->string('tamanho', 100);
+        Schema::table('products', function ($table) {
+            $table->string('size', 100);
         });
     }
 
@@ -25,8 +25,8 @@ class AdicionaTamanhoNoProduto extends Migration
      */
     public function down()
     {
-        Schema::table('produtos', function($table) {
-            $table->dropColumn('tamanho');
+        Schema::table('products', function ($table) {
+            $table->dropColumn('size');
         });
     }
 }

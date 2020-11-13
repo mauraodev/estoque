@@ -13,9 +13,8 @@ class AdicionaRelacionamentoProdutoCategoria extends Migration
      */
     public function up()
     {
-        Schema::table('produtos', function(Blueprint $table)
-        {
-            $table->integer('categoria_id')->default(1);
+        Schema::table('products', function (Blueprint $table) {
+            $table->integer('category_id')->default(1);
         });
     }
 
@@ -26,9 +25,8 @@ class AdicionaRelacionamentoProdutoCategoria extends Migration
      */
     public function down()
     {
-        Schema::table('produtos', function(Blueprint $table)
-        {
-            $table->dropColumn('categoria_id');
-        }); 
+        Schema::table('products', function (Blueprint $table) {
+            $table->dropColumn('category_id');
+        });
     }
 }
