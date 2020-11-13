@@ -4,7 +4,7 @@
 
     <h1>Editar Produto</h1>
 
-    <form class="form" action="{{ action('ProdutoController@store') }}" method="POST">
+    <form class="form" action="{{ action('ProductsController@store') }}" method="POST">
         <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
         <input type="hidden" name="id" value="{{ $p->id }}">
         <div class="form-group">

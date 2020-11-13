@@ -4,19 +4,21 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-use App\Produto;
-use App\Categoria;
+use App\Models\Category;
 use App\Http\Requests\ProdutosRequest;
+use App\Models\Product;
 use Validator;
 
-class ProdutoController extends Controller
+class ProductsController extends Controller
 {
     protected $product;
+    protected $category;
 
-    public function __construct(Produto $product)
+    public function __construct(Product $product, Category $category)
     {
         $this->middleware('auth')->only('index');
         $this->product = $product;
+        $this->category = $category;
     }
 
     public function index()
@@ -27,7 +29,7 @@ class ProdutoController extends Controller
 
     public function mostra($id)
     {
-        $produto = Produto::find($id);
+        $produto = $this->product->find($id);
 
         if (empty($produto)) {
             return "Esse produto não existe";
@@ -38,43 +40,43 @@ class ProdutoController extends Controller
 
     public function novo()
     {
-        return view('produto.formulario', ['categorias' => Categoria::all()]);
+        return view('produto.formulario', ['categorias' => $this->category->all()]);
     }
 
     public function adiciona(ProdutosRequest $request)
     {
         $params = $request->all();
-        Produto::create($params);
+        $this->product->create($params);
 
         return redirect()
-            ->action('ProdutoController@lista')
+            ->action('ProductsController@lista')
             ->withInput(['nome' => $request->input('nome')]);
     }
 
     public function json()
     {
-        $produtos = Produto::all();
+        $produtos = $this->product->all();
         return $produtos;
     }
 
     public function remove($id)
     {
-        $produto = Produto::find($id);
+        $produto = $this->product->find($id);
         $produto->delete();
 
         return redirect()
-            ->action('ProdutoController@lista');
+            ->action('ProductsController@lista');
     }
 
     public function editar($id)
     {
-        $produto = Produto::find($id);
+        $produto = $this->product->find($id);
         return view('produto.editar', ['p' => $produto]);
     }
 
     public function store(Request $request)
     {
-        $produto = Produto::find($request->input('id'));
+        $produto = $this->product->find($request->input('id'));
         $produto->nome = $request->input('nome');
         $produto->quantidade = $request->input('quantidade');
         $produto->valor = $request->input('valor');
@@ -83,6 +85,6 @@ class ProdutoController extends Controller
         $produto->save();
 
         return redirect()
-            ->action('ProdutoController@lista');
+            ->action('ProductsController@lista');
     }
 }

@@ -15,21 +15,21 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/produtos', 'ProdutoController@index')->middleware('nosso-middleware');
+Route::get('/produtos', 'ProductsController@index')->middleware('nosso-middleware');
 
-Route::get('/produtos/mostra/{id}', 'ProdutoController@mostra');
+Route::get('/produtos/mostra/{id}', 'ProductsController@mostra');
 
-Route::get('/produtos/novo', 'ProdutoController@novo');
+Route::get('/produtos/novo', 'ProductsController@novo');
 
-Route::post('/produtos/adiciona', 'ProdutoController@adiciona');
+Route::post('/produtos/adiciona', 'ProductsController@adiciona');
 
-Route::get('/produtos/json', 'ProdutoController@json');
+Route::get('/produtos/json', 'ProductsController@json');
 
-Route::get('/produtos/remove/{id}', 'ProdutoController@remove');
+Route::get('/produtos/remove/{id}', 'ProductsController@remove');
 
-Route::get('/produtos/editar/{id}', 'ProdutoController@editar');
+Route::get('/produtos/editar/{id}', 'ProductsController@editar');
 
-Route::post('/produtos/store', 'ProdutoController@store');
+Route::post('/produtos/store', 'ProductsController@store');
 
 Auth::routes();
 

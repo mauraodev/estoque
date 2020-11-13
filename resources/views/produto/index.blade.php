@@ -31,12 +31,12 @@
                         </a>
                     </td>
                     <td>
-                        <a href="{{ action('ProdutoController@remove', ['id' => $p->id]) }}">
+                        <a href="{{ action('ProductsController@remove', ['id' => $p->id]) }}">
                             <span class="glyphicon glyphicon-trash"></span>
                         </a>
                     </td>
                     <td>
-                        <a href="{{ action('ProdutoController@editar', ['id' => $p->id]) }}">
+                        <a href="{{ action('ProductsController@editar', ['id' => $p->id]) }}">
                             <span class="glyphicon glyphicon-edit"></span>
                         </a>
                     </td>

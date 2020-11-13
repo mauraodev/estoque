@@ -71,7 +71,7 @@
                                         </form>
                                     </li>
                                     <li>
-                                        <a href="{{ action('ProdutoController@index') }}">
+                                        <a href="{{ action('ProductsController@index') }}">
                                             Produtos
                                         </a>
                                     </li>
