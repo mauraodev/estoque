@@ -14,8 +14,8 @@ class Product extends Model
 
     public $timestamps = false;
 
-    public function categoria()
+    public function category()
     {
-        return $this->belongsTo('App\Models\Categoria');
+        return $this->belongsTo('App\Models\Category');
     }
 }
