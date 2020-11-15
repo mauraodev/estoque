@@ -24,18 +24,17 @@ class ProdutosRequest extends FormRequest
     public function rules()
     {
         return [
-            'nome' => 'required|min:5',
-            'descricao' => 'required|max:255',
-            'valor' => 'required|numeric',
-            'quantidade' => 'required|numeric'
+            'name' => 'required|min:5',
+            'description' => 'required|max:255',
+            'value' => 'required|numeric',
+            'amout' => 'required|numeric'
         ];
     }
 
     public function messages()
     {
-      return [
-         'required' => 'O campo :attribute é obrigatório',
-      ];
+        return [
+            'required' => 'O campo :attribute é obrigatório',
+        ];
     }
-
 }
