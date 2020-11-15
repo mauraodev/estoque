@@ -14,33 +14,34 @@
         </div>
     @endif
 
-    <form class="form" action="/produtos/adiciona" method="POST">
+    <form class="form" action="{{ action('ProductsController@adiciona') }}" method="POST">
         <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
         <div class="form-group">
-            <label for="nome">Nome</label>
-            <input class="form-control" name="nome" value="{{ old('nome') }}" />
+            <label for="name">name</label>
+            <input class="form-control" name="name" value="{{ old('name') }}" />
         </div>
         <div class="form-group">
-            <label for="quantidade">Quantidade</label>
-            <input class="form-control" name="quantidade" value="{{ old('quantidade') }}" />
+            <label for="amout">Quantidade</label>
+            <input class="form-control" name="amout" value="{{ old('amout') }}" />
         </div>
         <div class="form-group">
-            <label for="valor">Valor</label>
-            <input class="form-control" name="valor" value="{{ old('valor') }}" />
+            <label for="value">Valor</label>
+            <input class="form-control" name="value" value="{{ old('value') }}" />
         </div>
         <div class="form-group">
-            <label for="descricao">Descricao</label>
-            <textarea class="form-control" name="descricao"></textarea>
+            <label for="description">Descricao</label>
+            <textarea class="form-control" name="description"></textarea>
         </div>
         <div class="form-group">
             <label>Tamanho</label>
-            <input name="tamanho" class="form-control" />    
+            <input name="size" class="form-control" />    
         </div>
         <div class="form-group">
             <label>Categoria</label>
-            <select name="categoria_id" class="form-control">
-                @foreach($categorias as $c)
-                <option value="{{$c->id}}">{{$c->nome}}</option>
+            <select name="category_id" class="form-control">
+                <option value="">Selecione</option>
+                @foreach($categories as $c)
+                    <option value="{{$c->id}}">{{$c->name}}</option>
                 @endforeach
             </select>
         </div>

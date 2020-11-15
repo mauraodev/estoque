@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Http\Requests\ProdutosRequest;
 use App\Models\Product;
+use App\Repositories\CategoryRepository;
 use Validator;
 
 class ProductsController extends Controller
@@ -14,7 +15,7 @@ class ProductsController extends Controller
     protected $product;
     protected $category;
 
-    public function __construct(Product $product, Category $category)
+    public function __construct(Product $product, CategoryRepository $category)
     {
         $this->middleware('auth')->only('index');
         $this->product = $product;
@@ -24,6 +25,7 @@ class ProductsController extends Controller
     public function index()
     {
         $produtos = $this->product->all();
+        //dd($produtos);
         return view('produto.index', ['produtos' => $produtos]);
     }
 
@@ -40,7 +42,9 @@ class ProductsController extends Controller
 
     public function novo()
     {
-        return view('produto.formulario', ['categorias' => $this->category->all()]);
+        info($this->category->all());
+
+        return view('produto.formulario', ['categories' => $this->category->all()]);
     }
 
     public function adiciona(ProdutosRequest $request)
@@ -49,7 +53,7 @@ class ProductsController extends Controller
         $this->product->create($params);
 
         return redirect()
-            ->action('ProductsController@lista')
+            ->action('ProductsController@index')
             ->withInput(['nome' => $request->input('nome')]);
     }
 

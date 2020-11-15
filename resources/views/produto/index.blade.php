@@ -3,28 +3,46 @@
 @section('content')
 
 <div class="container">
-    <h1>Listagem de produtos</h1>
-    @if (empty($produtos))
-        <div class="alert alert-danger">
-            Você não tem nenhum produto cadastrado.
+    <div class="row">
+        <div class="col">
+            <h1>Listagem de produtos</h1>
+
+            @if (empty($produtos))
+                <div class="alert alert-danger">
+                    Você não tem nenhum produto cadastrado.
+                </div>
+            @else
         </div>
-    @else
+    </div>
     
-        @if (old('nome')):
-            <div class="alert alert-success">
-                <strong>Sucesso!</strong> O produto {{ old('nome') }} foi adicionado com sucesso!
-            </div>
-        @endif
+    <a href="{{ action('ProductsController@novo') }}">Adicionar</a>
+
+    @if (old('nome')):
+        <div class="alert alert-success">
+            <strong>Sucesso!</strong> O produto {{ old('nome') }} foi adicionado com sucesso!
+        </div>
+    @endif
 
         <table class="table table-striped table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nome</th>
+                    <th>Valor</th>
+                    <th>Quantidade</th>
+                    <th>Categoria</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
             @foreach ($produtos as $p)
-                <tr class="{{ $p->quantidade <= 1 ? 'danger' : ''}}">
-                    <td>{{ $p->nome }}</td>
-                    <td>{{ $p->valor }}</td>
-                    <td>{{ $p->descricao }}</td>
-                    <td>{{ $p->quantidade }}</td>
-                    <td>{{ $p->tamanho }}</td>
-                    <td>{{ $p->categoria->nome }}</td>
+                <tr>
+                    <td>{{ $p->id }}</td>
+                    <td>{{ $p->name }}</td>
+                    <td>{{ $p->value }}</td>
+                    <td>{{ $p->amout }}</td>
+                    <td>{{ $p->category->name }}</td>
                     <td>
                         <a href="/produtos/mostra/{{ $p->id }}">
                             <span class="glyphicon glyphicon-search"></span>

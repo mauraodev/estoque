@@ -16,7 +16,9 @@ class CategoriesController extends Controller
 
     public function index()
     {
-        return view('categories.index');
+        $categories = $this->categoryRepository->all();
+
+        return view('categories.index', ['categories' => $categories]);
     }
 
     public function create()
@@ -32,6 +34,13 @@ class CategoriesController extends Controller
 
         $this->categoryRepository->create($data);
 
-        info($request->all());
+        return redirect('/categories');
+    }
+
+    public function delete($id)
+    {
+        $this->categoryRepository->deleteById($id);
+        
+        return redirect('/categories');
     }
 }
