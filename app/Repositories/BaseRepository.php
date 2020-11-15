@@ -13,8 +13,23 @@ class BaseRepository
         $this->model = $model;
     }
 
-    public function create(array $attributes) : Model
+    public function all()
+    {
+        return $this->model->all();
+    }
+
+    public function find($id)
+    {
+        return $this->model->find($id);
+    }
+
+    public function create(array $attributes): Model
     {
         return $this->model->create($attributes);
+    }
+
+    public function deleteById($id)
+    {
+        return $this->find($id)->delete();
     }
 }
