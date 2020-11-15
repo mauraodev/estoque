@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "dev": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --config=node_modules/laravel-mix/setup/webpack.config.js",
     "watch": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "watch-poll": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --watch-poll --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
@@ -12,9 +12,12 @@
     "@babel/preset-env": "^7.12.1",
     "axios": "^0.19.2",
     "babel-loader": "^8.2.1",
-    "cross-env": "^3.2.3",
+    "cross-env": "^7.0.2",
     "jquery": "^3.5.0",
     "lodash": "^4.17.13",
+    "resolve-url-loader": "^2.3.1",
+    "sass": "^1.29.0",
+    "sass-loader": "^7.3.1",
     "vue": "^2.1.10",
     "webpack": "^4.44.2",
     "webpack-cli": "^4.2.0"
