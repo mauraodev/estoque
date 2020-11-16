@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-use App\Models\Category;
 use App\Http\Requests\ProdutosRequest;
 use App\Models\Product;
 use App\Repositories\CategoryRepository;
-use Validator;
 
 class ProductsController extends Controller
 {
@@ -25,11 +22,10 @@ class ProductsController extends Controller
     public function index()
     {
         $produtos = $this->product->all();
-        //dd($produtos);
         return view('produto.index', ['produtos' => $produtos]);
     }
 
-    public function mostra($id)
+    public function show($id)
     {
         $produto = $this->product->find($id);
 
@@ -40,14 +36,12 @@ class ProductsController extends Controller
         return view('produto.detalhes')->with('p', $produto);
     }
 
-    public function novo()
+    public function create()
     {
-        info($this->category->all());
-
         return view('produto.formulario', ['categories' => $this->category->all()]);
     }
 
-    public function adiciona(ProdutosRequest $request)
+    public function store(ProdutosRequest $request)
     {
         $params = $request->all();
         $this->product->create($params);
@@ -57,38 +51,34 @@ class ProductsController extends Controller
             ->withInput(['nome' => $request->input('nome')]);
     }
 
-    public function json()
-    {
-        $produtos = $this->product->all();
-        return $produtos;
-    }
-
-    public function remove($id)
+    public function destroy($id)
     {
         $produto = $this->product->find($id);
         $produto->delete();
 
         return redirect()
-            ->action('ProductsController@lista');
+            ->action('ProductsController@index');
     }
 
-    public function editar($id)
+    public function edit($id)
     {
         $produto = $this->product->find($id);
         return view('produto.editar', ['p' => $produto]);
     }
 
-    public function store(Request $request)
+    public function update(Request $request)
     {
+        info("Here!");
         $produto = $this->product->find($request->input('id'));
-        $produto->nome = $request->input('nome');
-        $produto->quantidade = $request->input('quantidade');
-        $produto->valor = $request->input('valor');
-        $produto->descricao = $request->input('descricao');
-        $produto->tamanho = $request->input('tamanho');
+        
+        $produto->name = $request->input('name');
+        $produto->amout = $request->input('amout');
+        $produto->value = $request->input('value');
+        $produto->description = $request->input('description');
+        $produto->size = $request->input('size');
         $produto->save();
 
         return redirect()
-            ->action('ProductsController@lista');
+            ->action('ProductsController@index');
     }
 }

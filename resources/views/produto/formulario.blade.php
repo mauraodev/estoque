@@ -14,10 +14,10 @@
         </div>
     @endif
 
-    <form class="form" action="{{ action('ProductsController@adiciona') }}" method="POST">
+    <form class="form" action="{{ action('ProductsController@store') }}" method="POST">
         <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
         <div class="form-group">
-            <label for="name">name</label>
+            <label for="name">Nome</label>
             <input class="form-control" name="name" value="{{ old('name') }}" />
         </div>
         <div class="form-group">
@@ -45,7 +45,7 @@
                 @endforeach
             </select>
         </div>
-        <button type="submit" class="btn btn-primary btn-block">Submit</button>
+        <button type="submit" class="btn btn-primary btn-block">Salvar</button>
     </form>
 
 @stop

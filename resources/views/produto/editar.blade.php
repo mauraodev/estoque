@@ -1,33 +1,33 @@
-@extends('layout.principal')
+@extends('layouts.app')
 
-@section('conteudo')
+@section('content')
 
     <h1>Editar Produto</h1>
 
-    <form class="form" action="{{ action('ProductsController@store') }}" method="POST">
+    <form class="form" action="{{ action('ProductsController@update', ['id' => $p->id]) }}" method="POST">
         <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
         <input type="hidden" name="id" value="{{ $p->id }}">
         <div class="form-group">
-            <label for="nome">Nome</label>
-            <input class="form-control" name="nome" value="{{ $p->nome }}">
+            <label for="name">Nome</label>
+            <input class="form-control" name="name" value="{{ $p->name }}">
         </div>
         <div class="form-group">
-            <label for="quantidade">Quantidade</label>
-            <input class="form-control" name="quantidade" value="{{ $p->quantidade }}"/>
+            <label for="amout">Quantidade</label>
+            <input class="form-control" name="amout" value="{{ $p->amout }}"/>
         </div>
         <div class="form-group">
-            <label for="valor">Valor</label>
-            <input class="form-control" name="valor" value="{{ $p->valor }}"/>
+            <label for="value">Valor</label>
+            <input class="form-control" name="value" value="{{ $p->value }}"/>
         </div>
         <div class="form-group">
-            <label for="descricao">Descricao</label>
-            <textarea class="form-control" name="descricao">{{ $p->descricao }}</textarea>
+            <label for="description">Descricao</label>
+            <textarea class="form-control" name="description">{{ $p->description }}</textarea>
         </div>
         <div class="form-group">
-            <label>Tamanho</label>
-            <input name="tamanho" class="form-control" value="{{ $p->tamanho }}" />    
+            <label for="size">Tamanho</label>
+            <input name="size" class="form-control" value="{{ $p->size }}" />    
         </div>
-        <button type="submit" class="btn btn-primary btn-block">Submit</button>
+        <button type="submit" class="btn btn-primary btn-block">Salvar</button>
     </form>
 
 @stop

@@ -15,7 +15,7 @@
         </div>
     </div>
     
-    <a href="{{ action('ProductsController@novo') }}">Adicionar</a>
+    <a href="{{ action('ProductsController@create') }}">Adicionar</a>
 
     @if (old('nome')):
         <div class="alert alert-success">
@@ -33,29 +33,27 @@
                     <th>Categoria</th>
                     <th></th>
                     <th></th>
-                    <th></th>
                 </tr>
             </thead>
             @foreach ($produtos as $p)
                 <tr>
                     <td>{{ $p->id }}</td>
-                    <td>{{ $p->name }}</td>
+                    <td>
+                        <a href="{{ action('ProductsController@show', ['id' => $p->id]) }}">
+                            {{ $p->name }}
+                        </a>
+                    </td>
                     <td>{{ $p->value }}</td>
                     <td>{{ $p->amout }}</td>
                     <td>{{ $p->category->name }}</td>
                     <td>
-                        <a href="/produtos/mostra/{{ $p->id }}">
-                            <span class="glyphicon glyphicon-search"></span>
+                        <a class="btn btn-danger" href="{{ action('ProductsController@destroy', ['id' => $p->id]) }}">
+                            Excluir
                         </a>
                     </td>
                     <td>
-                        <a href="{{ action('ProductsController@remove', ['id' => $p->id]) }}">
-                            <span class="glyphicon glyphicon-trash"></span>
-                        </a>
-                    </td>
-                    <td>
-                        <a href="{{ action('ProductsController@editar', ['id' => $p->id]) }}">
-                            <span class="glyphicon glyphicon-edit"></span>
+                        <a class="btn btn-info" href="{{ action('ProductsController@edit', ['id' => $p->id]) }}">
+                            Editar
                         </a>
                     </td>
                 </tr>

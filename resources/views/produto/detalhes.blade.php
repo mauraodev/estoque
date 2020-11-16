@@ -1,6 +1,6 @@
-@extends('layout.principal')
+@extends('layouts.app')
 
-@section('conteudo')
+@section('content')
 
     <h1>Detalhes do produto {{ $p->nome }}</h1>
 

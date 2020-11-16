@@ -11,25 +11,18 @@
 |
  */
 
+use App\Http\Controllers\ProductsController;
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/produtos', 'ProductsController@index')->middleware('nosso-middleware');
+Route::resources([
+    'products' => 'ProductsController'
+]);
 
-Route::get('/produtos/mostra/{id}', 'ProductsController@mostra');
-
-Route::get('/produtos/novo', 'ProductsController@novo');
-
-Route::post('/produtos/adiciona', 'ProductsController@adiciona');
-
-Route::get('/produtos/json', 'ProductsController@json');
-
-Route::get('/produtos/remove/{id}', 'ProductsController@remove');
-
-Route::get('/produtos/editar/{id}', 'ProductsController@editar');
-
-Route::post('/produtos/store', 'ProductsController@store');
+Route::get('/products/destroy/{id}', 'ProductsController@destroy');
+Route::post('/products/update/{id}', 'ProductsController@update');
 
 Auth::routes();
 
