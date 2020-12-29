@@ -37,6 +37,22 @@ class CategoriesController extends Controller
         return redirect('/categories');
     }
 
+    public function edit($id)
+    {
+        $category = $this->categoryRepository->find($id);
+        return view('categories.edit', ['category' => $category]);
+    }
+
+    public function update(Request $request)
+    {
+        $category = $this->categoryRepository->find($request->input('id'));
+
+        $category->name = $request->input('name');
+        $category->save();
+
+        return redirect('/categories');
+    }
+
     public function delete($id)
     {
         $this->categoryRepository->deleteById($id);

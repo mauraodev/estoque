@@ -45,7 +45,7 @@
                 @endforeach
             </select>
         </div>
-        <button type="submit" class="btn btn-primary btn-block">Salvar</button>
+        <button type="submit" class="btn btn-primary float-right">Salvar</byutton>
     </form>
 
 @stop

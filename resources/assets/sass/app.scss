@@ -7,3 +7,28 @@
 
 // Bootstrap
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+.navbar {
+    height: 60px;
+}
+
+.navbar-custom {
+    margin-top: 5px;
+}
+
+.navbar-nav {
+    background-color: $navbar-default-bg;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.navbar-default .navbar-brand {
+    font-weight: 400;
+    color: #ffffff;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: #ffffff;
+    font-weight: 600;
+    font-size: medium;
+}
