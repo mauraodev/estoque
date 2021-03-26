@@ -15,7 +15,11 @@
         </div>
     </div>
     
-    <a href="{{ action('ProductsController@create') }}">Adicionar</a>
+    <div class="row">
+        <div class="col">
+            <a class="btn btn-primary" href="{{ action('ProductsController@create') }}">Adicionar</a>
+        </div>
+    </div>
 
     @if (old('nome')):
         <div class="alert alert-success">

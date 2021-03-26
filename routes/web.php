@@ -11,14 +11,13 @@
 |
  */
 
-use App\Http\Controllers\ProductsController;
-
 Route::get('/', function () {
     return view('welcome');
 });
 
 Route::resources([
-    'products' => 'ProductsController'
+    'products' => 'ProductsController',
+    'companies' => 'CompaniesController'
 ]);
 
 Route::get('/products/destroy/{id}', 'ProductsController@destroy');
