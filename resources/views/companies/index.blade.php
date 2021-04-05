@@ -40,8 +40,8 @@
                         <tr>
                             <td>{{ $item->id }}</td>
                             <td>{{ $item->name }}</td>
-                            <td><a href="{{ url('/companies', $item->id) }}" class="btn btn-info">Editar</a></td>
-                            <td><a href="{{ url('/companies', $item->id) }}" class="btn btn-danger">Excluir</a></td>
+                            <td><a href="{{ action('CompaniesController@edit', ['id' => $item->id]) }}" class="btn btn-info">Editar</a></td>
+                            <td><a href="{{ action('CompaniesController@destroy', ['id' => $item->id]) }}" class="btn btn-danger">Excluir</a></td>
                         </tr>
                     @endforeach
                 </tbody>

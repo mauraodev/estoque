@@ -23,6 +23,8 @@ Route::resources([
 Route::get('/products/destroy/{id}', 'ProductsController@destroy');
 Route::post('/products/update/{id}', 'ProductsController@update');
 
+Route::get('/companies/destroy/{id}', 'CompaniesController@destroy');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
