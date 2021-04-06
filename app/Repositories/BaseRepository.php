@@ -3,10 +3,12 @@
 namespace App\Repositories;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class BaseRepository
 {
     protected $model;
+    protected $companyId;
 
     public function __construct(Model $model)
     {
@@ -14,6 +16,11 @@ class BaseRepository
     }
 
     public function all()
+    {
+        return $this->model->where('company_id', Auth::user()->id)->get();
+    }
+
+    public function allWithOutCompany()
     {
         return $this->model->all();
     }

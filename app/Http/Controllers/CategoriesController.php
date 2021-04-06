@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Repositories\CategoryRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CategoriesController extends Controller
 {
@@ -13,7 +14,7 @@ class CategoriesController extends Controller
     {
         $this->categoryRepository = $categoryRepository;
     }
-
+    
     public function index()
     {
         $categories = $this->categoryRepository->all();

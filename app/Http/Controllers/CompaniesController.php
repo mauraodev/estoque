@@ -16,7 +16,7 @@ class CompaniesController extends Controller
 
     public function index()
     {
-        $items = $this->companyRepository->all();
+        $items = $this->companyRepository->allWithOutCompany();
 
         return view('companies.index', ['items' => $items]);
     }
