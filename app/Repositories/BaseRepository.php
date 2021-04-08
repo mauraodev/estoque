@@ -17,7 +17,7 @@ class BaseRepository
 
     public function all()
     {
-        return $this->model->where('company_id', Auth::user()->id)->get();
+        return $this->model->where('company_id', Auth::user()->company_id)->get();
     }
 
     public function allWithOutCompany()
@@ -32,11 +32,20 @@ class BaseRepository
 
     public function create(array $attributes): Model
     {
+        $attributes['company_id'] = Auth::user()->company_id;
         return $this->model->create($attributes);
     }
 
     public function deleteById($id)
     {
-        return $this->find($id)->delete();
+        return $this->model->find($id)->delete();
+    }
+
+    public function update($id, $data)
+    {
+        $item = $this->model->find($id);
+        $item->company_id = Auth::user()->company_id;
+
+        return $item->update($data);
     }
 }

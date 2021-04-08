@@ -4,30 +4,31 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\ProdutosRequest;
-use App\Models\Product;
 use App\Repositories\CategoryRepository;
+use App\Repositories\ProductRepository;
 
 class ProductsController extends Controller
 {
     protected $product;
+    protected $productRepository;
     protected $category;
 
-    public function __construct(Product $product, CategoryRepository $category)
+    public function __construct(CategoryRepository $category, ProductRepository $productRepository)
     {
         $this->middleware('auth')->only('index');
-        $this->product = $product;
         $this->category = $category;
+        $this->productRepository = $productRepository;
     }
 
     public function index()
     {
-        $produtos = $this->product->all();
+        $produtos = $this->productRepository->all();
         return view('produto.index', ['produtos' => $produtos]);
     }
 
     public function show($id)
     {
-        $produto = $this->product->find($id);
+        $produto = $this->productRepository->find($id);
 
         if (empty($produto)) {
             return "Esse produto não existe";
@@ -43,8 +44,16 @@ class ProductsController extends Controller
 
     public function store(ProdutosRequest $request)
     {
-        $params = $request->all();
-        $this->product->create($params);
+        $data = [
+            'name' => $request->post('name'),
+            'description' => $request->post('description'),
+            'value' => $request->post('value'),
+            'amout' => $request->post('amout'),
+            'size' => $request->post('size'),
+            'category_id' => $request->post('category_id'),
+        ];
+
+        $this->productRepository->create($data);
 
         return redirect()
             ->action('ProductsController@index')
@@ -53,8 +62,7 @@ class ProductsController extends Controller
 
     public function destroy($id)
     {
-        $produto = $this->product->find($id);
-        $produto->delete();
+        $this->productRepository->deleteById($id);
 
         return redirect()
             ->action('ProductsController@index');
@@ -62,21 +70,15 @@ class ProductsController extends Controller
 
     public function edit($id)
     {
-        $produto = $this->product->find($id);
+        $produto = $this->productRepository->find($id);
         return view('produto.editar', ['p' => $produto]);
     }
 
     public function update(Request $request)
     {
-        info("Here!");
-        $produto = $this->product->find($request->input('id'));
-        
-        $produto->name = $request->input('name');
-        $produto->amout = $request->input('amout');
-        $produto->value = $request->input('value');
-        $produto->description = $request->input('description');
-        $produto->size = $request->input('size');
-        $produto->save();
+        $data = $request->all();
+
+        $this->productRepository->update($request->post('id'), $data);
 
         return redirect()
             ->action('ProductsController@index');
