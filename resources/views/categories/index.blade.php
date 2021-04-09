@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="row">
-        <divl class="col">
+        <div class="col-sm-12 col-md-12 col-lg-12">
             <h2>Categorias</h2>
 
             <nav aria-label="breadcrumb">
@@ -13,22 +13,26 @@
                     <li class="breadcrumb-item active" aria-current="page">Categorias</li>
                 </ol>
             </nav>
-        </divl>
+        </div>
     </div>
 
     <div class="row">
-        <div class="col-12">
-            <a href="{{ url('categories/create') }}" class="btn btn-primary">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <a href="{{ url('categories/create') }}" class="btn btn-primary pull-right">
                 Adicionar
             </a>
+        </div>
+    </div>
 
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12">
             <table class="table">
                 <thead>
                     <tr>
-                        <th>#</th>
-                        <th>Nome</th>
-                        <th></th>
-                        <th></th>
+                        <th scope="col">#</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>

@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="row">
-        <divl class="col">
+        <div class="col-sm-12 col-md-12 col-lg-12">
             <h2>Categorias</h2>
 
             <nav aria-label="breadcrumb">
@@ -16,11 +16,11 @@
                     <li class="breadcrumb-item active" aria-current="page">Categoria</li>
                 </ol>
             </nav>
-        </divl>
+        </div>
     </div>
 
     <div class="row">
-        <div class="col-12">
+        <div class="col-sm-12 col-md-12 col-lg-12">
             <form method="POST" action="{{ action('CategoriesController@store') }}">
                 @csrf
                 <div class="form-group">
@@ -28,8 +28,8 @@
                     <input type="text" class="form-control" name="name" id="name">
                 </div>
 
-                <button class="btn btn-primary">
-                    Enviar
+                <button class="btn btn-primary pull-right">
+                    Salvar
                 </button>
             </form>
         </div>

@@ -7,7 +7,7 @@
         <input type="text" class="form-control" name="name" id="name" value="{{ $category->name }}">
     </div>
 
-    <button class="btn btn-primary">
+    <button class="btn btn-primary pull-right">
         Salvar
     </button>
 </form>
