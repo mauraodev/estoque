@@ -4,8 +4,8 @@
 
 <div class="container">
     <div class="row">
-        <div class="col">
-            <h1>Listagem de produtos</h1>
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <h1>Produtos</h1>
 
             @if (empty($produtos))
                 <div class="alert alert-danger">
@@ -16,7 +16,7 @@
     </div>
     
     <div class="row">
-        <div class="col">
+        <div class="col-sm-12 col-md-12 col-lg-12 pull-right">
             <a class="btn btn-primary" href="{{ action('ProductsController@create') }}">Adicionar</a>
         </div>
     </div>
@@ -28,8 +28,8 @@
     @endif
 
     <div class="row">
-        <div class="col">
-            <table class="table table-striped table-bordered table-hover">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <table class="table">
                 <thead>
                     <tr>
                         <th>#</th>
@@ -51,13 +51,17 @@
                         <td>{{ $p->value }}</td>
                         <td>{{ $p->amout }}</td>
                         <td>
-                            <a class="btn btn-danger" href="{{ action('ProductsController@destroy', ['id' => $p->id]) }}">
-                                Excluir
+                            <a class="btn btn-danger" 
+                                href="{{ action('ProductsController@destroy', ['id' => $p->id]) }}"
+                                alt="Excluir">
+                                <i class="bi bi-trash"></i>
                             </a>
                         </td>
                         <td>
-                            <a class="btn btn-info" href="{{ action('ProductsController@edit', ['id' => $p->id]) }}">
-                                Editar
+                            <a class="btn btn-info" 
+                                href="{{ action('ProductsController@edit', ['id' => $p->id]) }}"
+                                alt="Editar">
+                                <i class="bi bi-pencil"></i>
                             </a>
                         </td>
                     </tr>

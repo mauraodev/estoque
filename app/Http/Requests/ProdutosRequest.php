@@ -26,7 +26,7 @@ class ProdutosRequest extends FormRequest
         return [
             'name' => 'required|min:5',
             'description' => 'required|max:255',
-            'value' => 'required|numeric',
+            'value' => 'required',
             'amout' => 'required|numeric'
         ];
     }
@@ -34,7 +34,9 @@ class ProdutosRequest extends FormRequest
     public function messages()
     {
         return [
+            'min:5' => 'A quantidade mínima para esse campo :attribute é 5',
             'required' => 'O campo :attribute é obrigatório',
+            'numeric' => 'O campo :attribute precisa ser um número',
         ];
     }
 }

@@ -47,7 +47,7 @@ class ProductsController extends Controller
         $data = [
             'name' => $request->post('name'),
             'description' => $request->post('description'),
-            'value' => $request->post('value'),
+            'value' => str_replace(',', '.', $request->post('value')),
             'amout' => $request->post('amout'),
             'size' => $request->post('size'),
             'category_id' => $request->post('category_id'),
