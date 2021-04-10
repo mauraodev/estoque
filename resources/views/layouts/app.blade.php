@@ -28,23 +28,31 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        QESTOQUE
-                    </a>
+                    @if (Auth::check())
+                        <a class="navbar-brand" href="{{ url('home') }}">
+                            QESTOQUE
+                        </a>
+                    @else
+                        <a class="navbar-brand" href="{{ url('/') }}">
+                            QESTOQUE
+                        </a>
+                    @endif
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        <li>
-                            <a href="{{ action('ProductsController@index') }}">Produtos</a>
-                        </li>
-                        <li>
-                            <a href="{{ action('CategoriesController@index')}}">
-                                Categorias
-                            </a>
-                        </li>
-                    </ul>
+                    @if (Auth::check())
+                        <ul class="nav navbar-nav">
+                            <li>
+                                <a href="{{ action('ProductsController@index') }}">Produtos</a>
+                            </li>
+                            <li>
+                                <a href="{{ action('CategoriesController@index')}}">
+                                    Categorias
+                                </a>
+                            </li>
+                        </ul>
+                    @endif
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
