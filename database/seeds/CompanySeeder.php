@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class DatabaseSeeder extends Seeder
+class CompanySeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,7 +11,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-    	$this->call(CompanySeeder::class);
-        $this->call(UserSeeder::class);
+        DB::table('companies')->insert([
+            'name' => 'Lumia',
+        ]);
     }
 }
