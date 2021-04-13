@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CategoryRequest;
 use App\Repositories\CategoryRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -27,7 +28,7 @@ class CategoriesController extends Controller
         return view('categories.create');
     }
 
-    public function store(Request $request)
+    public function store(CategoryRequest $request)
     {
         $data = [
             'name' => $request->post('name')
@@ -44,7 +45,7 @@ class CategoriesController extends Controller
         return view('categories.edit', ['category' => $category]);
     }
 
-    public function update(Request $request)
+    public function update(CategoryRequest $request)
     {
         $category = $this->categoryRepository->find($request->input('id'));
 
