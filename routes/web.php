@@ -39,3 +39,7 @@ Route::prefix('categories')->group(function () {
     Route::post('update', 'CategoriesController@update');
     Route::get('/delete/{id}', 'CategoriesController@delete');
 });
+
+Route::prefix('/sales')->group(function () {
+    Route::get('/', 'SalesController@index');
+});
