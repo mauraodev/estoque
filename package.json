@@ -8,7 +8,7 @@
     "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --config=node_modules/laravel-mix/setup/webpack.config.js"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.3",
+    "@babel/core": "^7.13.14",
     "@babel/preset-env": "^7.12.1",
     "axios": "^0.21.1",
     "babel-loader": "^8.2.1",
@@ -24,9 +24,9 @@
     "webpack-cli": "^4.2.0"
   },
   "dependencies": {
-    "bootstrap": "^4.4.1",
+    "bootstrap": "^4.6.0",
     "bootstrap-icons": "^1.4.1",
     "bootstrap-sass": "^3.4.1",
-    "laravel-mix": "^4.1.4"
+    "laravel-mix": "^5.0.0"
   }
 }
