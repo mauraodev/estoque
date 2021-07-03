@@ -43,3 +43,7 @@ Route::prefix('categories')->group(function () {
 Route::prefix('/sales')->group(function () {
     Route::get('/', 'SalesController@index');
 });
+
+Route::prefix('/users')->group(function () {
+    Route::get('/', 'UsersController@index');
+});
