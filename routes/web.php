@@ -46,4 +46,6 @@ Route::prefix('/sales')->group(function () {
 
 Route::prefix('/users')->group(function () {
     Route::get('/', 'UsersController@index');
+    Route::get('/create', 'UsersController@create');
+    Route::post('/create', 'UsersController@store');
 });

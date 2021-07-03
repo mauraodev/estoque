@@ -12,4 +12,9 @@ class CompanyRepository extends BaseRepository
     {
         parent::__construct($model);
     }
+
+    public function all()
+    {
+        return $this->model->all();
+    }
 }

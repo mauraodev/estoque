@@ -8,6 +8,9 @@
                     <div class="panel-heading">Usuários</div>
 
                     <div class="panel-body">
+                        <a class="btn btn-primary pull-right" href="{{ action('UsersController@create') }}">Criar</a>
+
+
                         <table class="table">
                             <thead>
                                 <tr>
