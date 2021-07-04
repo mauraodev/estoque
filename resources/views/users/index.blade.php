@@ -26,7 +26,15 @@
                                         <td>{{ $user->id }}</td>
                                         <td>{{ $user->name }}</td>
                                         <td>{{ $user->email }}</td>
-                                        <td></td>
+                                        <td>
+                                            <a class="btn btn-info" href="{{ action('UsersController@edit', ['id' => $user->id])}}">
+                                                Editar
+                                            </a>
+
+                                            <a class="btn btn-danger" href="{{ action('UsersController@destroy', ['id' => $user->id]) }}">
+                                                Excluir
+                                            </a>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>

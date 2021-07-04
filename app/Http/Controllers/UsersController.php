@@ -50,7 +50,40 @@ class UsersController extends Controller
         ];
 
         $this->userService->create($user);
+
+        return redirect('/users');
+    }
+
+    public function edit($id)
+    {
+        $user = $this->userService->find($id);
+
+        return view('users.edit', ['user' => $user, 'companies' => $this->companyService->all()]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $user = $this->userService->find($id);
+        $user->name = $request->post('name');
+        $user->email = $request->post('email');
+        $user->company_id = $request->post('company_id');
         
+        if ($request->post('password')) {
+            $user->password = $request->post('password');
+        }
+
+        \Log::info($user);
+
+        $user->save();
+
+        return redirect('/users');
+    }
+
+    public function destroy($id)
+    {
+        $user = $this->userService->find($id);
+        $user->delete();
+
         return redirect('/users');
     }
 }

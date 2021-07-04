@@ -5,7 +5,7 @@ namespace App\Services;
 use App\Repositories\UserRepository;
 use App\User;
 
-class UserService
+class UserService extends BaseService
 {
     protected $userRepository;
 
@@ -22,5 +22,10 @@ class UserService
     public function create(array $attributes): User
     {
         return $this->userRepository->create($attributes);
+    }
+
+    public function find($id)
+    {
+        return $this->userRepository->find($id);
     }
 }

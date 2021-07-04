@@ -48,4 +48,7 @@ Route::prefix('/users')->group(function () {
     Route::get('/', 'UsersController@index');
     Route::get('/create', 'UsersController@create');
     Route::post('/create', 'UsersController@store');
+    Route::get('/{id}/edit', 'UsersController@edit');
+    Route::post('/update/{id}', 'UsersController@update');
+    Route::get('/delete/{id}', 'UsersController@destroy');
 });
