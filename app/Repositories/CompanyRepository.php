@@ -17,4 +17,10 @@ class CompanyRepository extends BaseRepository
     {
         return $this->model->all();
     }
+
+    public function findByToken($token)
+    {
+        return $this->model->where('api_token', $token)
+            ->get();
+    }
 }

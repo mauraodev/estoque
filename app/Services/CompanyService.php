@@ -17,4 +17,9 @@ class CompanyService
     {
         return $this->companyRepository->all();
     }
+
+    public function findByToken($token)
+    {
+        return $this->companyRepository->findByToken($token);
+    }
 }
