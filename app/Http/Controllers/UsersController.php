@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Services\CompanyService;
 use App\Services\UserService;
-use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
 {
@@ -45,7 +45,7 @@ class UsersController extends Controller
         $user = [
             'name' => $request->post('name'),
             'email' => $request->post('email'),
-            'password' => $request->post('password'),
+            'password' => Hash::make($request->post('password')),
             'company_id' => $request->post('company_id'),
         ];
 
@@ -69,10 +69,8 @@ class UsersController extends Controller
         $user->company_id = $request->post('company_id');
         
         if ($request->post('password')) {
-            $user->password = $request->post('password');
+            $user->password = Hash::make($request->post('password'));
         }
-
-        \Log::info($user);
 
         $user->save();
 
