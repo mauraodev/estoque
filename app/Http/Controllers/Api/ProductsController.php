@@ -29,17 +29,7 @@ class ProductsController extends Controller
     public function show($id)
     {
         $produto = $this->productRepository->find($id);
-
-        if (empty($produto)) {
-            return "Esse produto não existe";
-        }
-
-        return view('produto.detalhes')->with('p', $produto);
-    }
-
-    public function create()
-    {
-        return view('produto.formulario', ['categories' => $this->category->all()]);
+        return response()->json($produto, 200);
     }
 
     public function store(ProdutosRequest $request)
@@ -53,34 +43,24 @@ class ProductsController extends Controller
             'category_id' => $request->post('category_id'),
         ];
 
-        $this->productRepository->create($data);
+        $product = $this->productRepository->create($data);
 
-        return redirect()
-            ->action('ProductsController@index')
-            ->withInput(['nome' => $request->input('nome')]);
+        return response()->json($product, 200);
     }
 
     public function destroy($id)
     {
         $this->productRepository->deleteById($id);
 
-        return redirect()
-            ->action('ProductsController@index');
+        return response()->json(['message' => 'Produto excluído com sucesso'], 200);
     }
 
-    public function edit($id)
-    {
-        $produto = $this->productRepository->find($id);
-        return view('produto.editar', ['p' => $produto]);
-    }
-
-    public function update(Request $request)
+    public function update($id, Request $request)
     {
         $data = $request->all();
 
-        $this->productRepository->update($request->post('id'), $data);
+        $product = $this->productRepository->update($id, $data);
 
-        return redirect()
-            ->action('ProductsController@index');
+        return response()->json($product, 200);
     }
 }

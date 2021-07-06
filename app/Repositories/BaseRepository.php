@@ -15,7 +15,7 @@ class BaseRepository
         $this->model = $model;
     }
 
-    public function all()
+    public function before()
     {
         if (!is_null(session('company_id'))) {
             $this->companyId = session('company_id');
@@ -24,8 +24,12 @@ class BaseRepository
         } else {
             return response()->json(['message' => 'Não foi possível encontrar a empresa'], 200);
         }
-
-        return $this->model->where('company_id', Auth::user()->company_id)->get();
+    }
+    
+    public function all()
+    {
+        $this->before();
+        return $this->model->where('company_id', $this->companyId)->get();
     }
 
     public function allWithOutCompany()
@@ -40,19 +44,21 @@ class BaseRepository
 
     public function create(array $attributes): Model
     {
-        $attributes['company_id'] = Auth::user()->company_id;
+        $this->before();
+        $attributes['company_id'] = $this->companyId;
         return $this->model->create($attributes);
     }
 
     public function deleteById($id)
     {
+        $this->before();
         return $this->model->find($id)->delete();
     }
 
     public function update($id, $data)
     {
         $item = $this->model->find($id);
-        $item->company_id = Auth::user()->company_id;
+        // $item->company_id = Auth::user()->company_id;
 
         return $item->update($data);
     }

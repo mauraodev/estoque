@@ -20,5 +20,8 @@ use Illuminate\Http\Request;
 Route::middleware('company_token')->group(function () {
     Route::prefix('products')->group(function () {
         Route::get('/', 'Api\\ProductsController@index');
+        Route::get('/{id}', 'Api\\ProductsController@show');
+        Route::post('/', 'Api\\ProductsController@store');
+        Route::put('/{id}', 'Api\\ProductsController@update');
     });
 });
