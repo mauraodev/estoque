@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use App\Services\CompanyService;
 use Closure;
+use Illuminate\Support\Facades\Session;
 
 class CompanyToken
 {
@@ -29,6 +30,9 @@ class CompanyToken
         $company = $this->companyService->findByToken($token);
 
         if ($company) {
+            Session::put('company_id', $company[0]->id);
+            Session::save();
+
             return $next($request);
         }
     }
