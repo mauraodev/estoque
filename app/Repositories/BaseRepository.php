@@ -17,6 +17,14 @@ class BaseRepository
 
     public function all()
     {
+        if (!is_null(session('company_id'))) {
+            $this->companyId = session('company_id');
+        } elseif (isset(Auth::user()->company_id)) {
+            $this->companyId = Auth::user()->company_id;
+        } else {
+            return response()->json(['message' => 'Não foi possível encontrar a empresa'], 200);
+        }
+
         return $this->model->where('company_id', Auth::user()->company_id)->get();
     }
 
