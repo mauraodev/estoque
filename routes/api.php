@@ -23,5 +23,6 @@ Route::middleware('company_token')->group(function () {
         Route::get('/{id}', 'Api\\ProductsController@show');
         Route::post('/', 'Api\\ProductsController@store');
         Route::put('/{id}', 'Api\\ProductsController@update');
+        Route::delete('/{id}', 'Api\\ProductsController@destroy');
     });
 });
