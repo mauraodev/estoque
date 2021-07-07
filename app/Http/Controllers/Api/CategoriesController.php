@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CategoryRequest;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProdutosRequest;
 use App\Repositories\CategoryRepository;
@@ -23,38 +24,30 @@ class CategoriesController extends Controller
 
     public function show($id)
     {
-        $produto = $this->productRepository->find($id);
-        return response()->json($produto, 200);
+        return response()->json($this->categoryRepository->find($id), 200);
     }
 
-    public function store(ProdutosRequest $request)
+    public function store(CategoryRequest $request)
     {
         $data = [
-            'name' => $request->post('name'),
-            'description' => $request->post('description'),
-            'value' => str_replace(',', '.', $request->post('value')),
-            'amout' => $request->post('amout'),
-            'size' => $request->post('size'),
-            'category_id' => $request->post('category_id'),
+            'name' => $request->post('name')
         ];
 
-        $product = $this->productRepository->create($data);
-
-        return response()->json($product, 200);
+        return response()->json($this->categoryRepository->create($data), 200);
     }
 
     public function destroy($id)
     {
-        $this->productRepository->deleteById($id);
+        $this->categoryRepository->deleteById($id);
 
-        return response()->json(['message' => 'Produto excluído com sucesso'], 200);
+        return response()->json(['message' => 'Categoria excluída com sucesso'], 200);
     }
 
-    public function update($id, Request $request)
+    public function update($id, CategoryRequest $request)
     {
         $data = $request->all();
 
-        $product = $this->productRepository->update($id, $data);
+        $product = $this->categoryRepository->update($id, $data);
 
         return response()->json($product, 200);
     }

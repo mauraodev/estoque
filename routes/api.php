@@ -28,5 +28,9 @@ Route::middleware('company_token')->group(function () {
 
     Route::prefix("categories")->group(function () {
         Route::get("/", "Api\\CategoriesController@index");
+        Route::get("/{id}", "Api\\CategoriesController@show");
+        Route::post('/', 'Api\\CategoriesController@store');
+        Route::put('/{id}', 'Api\\CategoriesController@update');
+        Route::delete('/{id}', 'Api\\CategoriesController@destroy');
     });
 });
