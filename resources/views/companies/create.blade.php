@@ -23,9 +23,15 @@
         <div class="col">
             <form class="form" action="{{ action('CompaniesController@store') }}" method="POST">
                 <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
+
                 <div class="form-group">
                     <label for="name">Nome</label>
                     <input type="text" class="form-control" name="name">
+                </div>
+
+                <div class="form-group">
+                    <label for="api_token">Token</label>
+                    <input type="text" class="form-control" name="api_token">
                 </div>
 
                 <div class="form-group">
