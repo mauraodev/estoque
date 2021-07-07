@@ -25,4 +25,8 @@ Route::middleware('company_token')->group(function () {
         Route::put('/{id}', 'Api\\ProductsController@update');
         Route::delete('/{id}', 'Api\\ProductsController@destroy');
     });
+
+    Route::prefix("categories")->group(function () {
+        Route::get("/", "Api\\CategoriesController@index");
+    });
 });
