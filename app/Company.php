@@ -8,5 +8,5 @@ class Company extends Model
 {
     protected $tables = 'companies';
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'api_token'];
 }

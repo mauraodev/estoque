@@ -34,7 +34,8 @@ class CompaniesController extends Controller
     public function store(Request $request)
     {
         $data = [
-            'name' => $request->post('name')
+            'name' => $request->post('name'),
+            'api_token' => $request->post('api_token'),
         ];
 
         $this->companyRepository->create($data);
@@ -55,6 +56,7 @@ class CompaniesController extends Controller
         $item = $this->companyRepository->find($id);
 
         $item->name = $request->post('name');
+        $item->api_token = $request->post('api_token');
         $item->save();
 
         return redirect()
