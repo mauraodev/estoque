@@ -10,13 +10,13 @@
                     <div class="panel-body">
                         <a class="btn btn-primary pull-right" href="{{ action('UsersController@create') }}">Criar</a>
 
-
                         <table class="table">
                             <thead>
                                 <tr>
                                     <th>#</th>
                                     <th>Nome</th>
                                     <th>Email</th>
+                                    <th>Empresa</th>
                                     <th>Ações</th>
                                 </tr>
                             </thead>
@@ -26,12 +26,13 @@
                                         <td>{{ $user->id }}</td>
                                         <td>{{ $user->name }}</td>
                                         <td>{{ $user->email }}</td>
+                                        <td>{{ $user->companies->name }}</td>
                                         <td>
-                                            <a class="btn btn-info" href="{{ action('UsersController@edit', ['id' => $user->id])}}">
+                                            <a class="btn btn-sm btn-info" href="{{ action('UsersController@edit', ['id' => $user->id])}}">
                                                 Editar
                                             </a>
 
-                                            <a class="btn btn-danger" href="{{ action('UsersController@destroy', ['id' => $user->id]) }}">
+                                            <a class="btn btn-sm btn-danger" href="{{ action('UsersController@destroy', ['id' => $user->id]) }}">
                                                 Excluir
                                             </a>
                                         </td>

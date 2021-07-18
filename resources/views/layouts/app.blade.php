@@ -47,9 +47,13 @@
                                 <a href="{{ action('ProductsController@index') }}">Produtos</a>
                             </li>
                             <li>
-                                <a href="{{ action('CategoriesController@index')}}">
-                                    Categorias
-                                </a>
+                                <a href="{{ action('CategoriesController@index')}}">Categorias</a>
+                            </li>
+                            <li>
+                                <a href="{{ action('CompaniesController@index') }}">Empresas</a>
+                            </li>
+                            <li>
+                                <a href="{{ action('UsersController@index') }}">Usuários</a>
                             </li>
                         </ul>
                     @endif

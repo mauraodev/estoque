@@ -52,3 +52,5 @@ Route::prefix('/users')->group(function () {
     Route::post('/update/{id}', 'UsersController@update');
     Route::get('/delete/{id}', 'UsersController@destroy');
 });
+
+Route::get('/test', 'TestController@index');

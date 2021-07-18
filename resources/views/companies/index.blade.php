@@ -2,50 +2,44 @@
 
 @section('content')
 
-<div class="container">
+<div class="container">    
     <div class="row">
-        <div class="col">
-            <h1>Empresas</h1>
-        </div>
-    </div>
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Empresas
+                </div>
+                
+                <div class="panel-body">
+                    <a href="{{ url('/companies/create') }}" class="btn btn-primary pull-right">Criar</a>
 
-    <div class="row">
-        <div class="col">
-            <ol class="breadcrumb">
-                <li>Home</li>
-                <li>Empresas</li>
-            </ol>
-        </div>
-    </div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Nome</th>
+                                <th>Editar</th>
+                                <th>Excluir</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($items as $item)
+                                <tr>
+                                    <td>{{ $item->id }}</td>
+                                    <td>{{ $item->name }}</td>
+                                    <td>
+                                        <a href="{{ action('CompaniesController@edit', ['id' => $item->id]) }}" class="btn btn-sm btn-info">Editar</a>
+                                    </td>
+                                    <td>
+                                        <a href="{{ action('CompaniesController@destroy', ['id' => $item->id]) }}" class="btn btn-sm btn-danger">Excluir</a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
 
-    <div class="row">
-        <div class="col">
-            <a href="{{ url('/companies/create') }}" class="btn btn-primary">Adicionar</a>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Nome</th>
-                        <th>Editar</th>
-                        <th>Excluir</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($items as $item)
-                        <tr>
-                            <td>{{ $item->id }}</td>
-                            <td>{{ $item->name }}</td>
-                            <td><a href="{{ action('CompaniesController@edit', ['id' => $item->id]) }}" class="btn btn-info">Editar</a></td>
-                            <td><a href="{{ action('CompaniesController@destroy', ['id' => $item->id]) }}" class="btn btn-danger">Excluir</a></td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
         </div>
     </div>
 </div>

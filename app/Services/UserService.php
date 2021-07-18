@@ -5,7 +5,7 @@ namespace App\Services;
 use App\Repositories\UserRepository;
 use App\User;
 
-class UserService extends BaseService
+class UserService
 {
     protected $userRepository;
 
